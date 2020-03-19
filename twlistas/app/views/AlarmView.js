@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { View } from 'react-native';
+import AlarmList from '../components/AlarmList';
 
 const _list = [{
     id: '23',
@@ -12,9 +13,17 @@ const _list = [{
 
 export default () => {
     const [list, setList] = useState(_list);
+
+    function remove(){
+
+    }
+
+    function update(){
+
+    }
     return (
         <View>
-
+            <AlarmList list={list} onRemove={remove} onChange={update} />
         </View>
     )
 }
