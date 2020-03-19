@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Button, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import AlarmView from './AlarmView';
+import EventsView from './EventsView';
+
 export default (props) => {
+    const [view, setView] = useState('alarm');
 
     function logout(){
         auth().signOut();
@@ -12,9 +15,12 @@ export default (props) => {
     return (
         <View style={styles.container} >
             <View style={styles.viewContainer} >
-                <AlarmView />
+                {view === 'alarm' && <AlarmView />}
+                {view === 'events' && <EventsView />}
             </View>
             <View style={styles.buttonContainer} >
+                <Button title="Alarmes" onPress={()=>setView('alarm')} color="#ff2724" />
+                <Button title="Eventos" onPress={()=>setView('events')} color="#ff2724" />
                 <Button title="Logout" onPress={logout} color="#ff2724" />
             </View>
         </View>
