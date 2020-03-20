@@ -40,6 +40,16 @@ export const MessagesService = {
             priority: 'high'
         })
     },
+    cancelAll(){
+        PushNotification.cancelAllLocalNotifications();
+    },
+    scheduleNotification(date, notificationConfig){
+        PushNotification.localNotificationSchedule({
+            ...notificationConfig,
+            date,
+            priority: 'high'
+        })
+    },
     async handleMessage(remoteMessage){
         console.log('Minha Mensagem: ', remoteMessage);
         return true;

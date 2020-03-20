@@ -3,6 +3,7 @@ import { View, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AlarmList from '../components/AlarmList';
 import {AlarmService} from '../services/AlarmService';
+import {MessagesService} from '../services/MessagesService';
 
 export default () => {
     const [list, setList] = useState([]);
@@ -15,6 +16,29 @@ export default () => {
             alarmUnsubscribe();
         }
     }, [])
+
+    useEffect(() => {
+        // MessagesService.cancelAll();
+        list.forEach(item => {
+            MessagesService.scheduleNotification( getScheduleTime(item.body.time),{
+                id: item.body.name.replace(':', ''),
+                title: item.body.name,
+                message: 'Chegou a Hora'
+            });
+        })
+    }, [list])
+
+    function getScheduleTime(time){
+        let currentDate = new Date();
+        let futureDate = new Date(time);
+        if(currentDate.getTime() < futureDate.getTime()){
+            return futureDate;
+        }
+        currentDate.setHours(futureDate.getHours());
+        currentDate.setMinutes(futureDate.getMinutes());
+        currentDate.setDate(currentDate.getDate() + 1);
+        return currentDate;
+    }
 
     function formatTime(time){
         const hour = time.getHours().toString().padStart(2, '0');
