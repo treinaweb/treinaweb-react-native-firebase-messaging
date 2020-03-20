@@ -6,9 +6,9 @@ admin.initializeApp({
   databaseURL: "https://my-app-auth-78a32.firebaseio.com"
 });
 
-const token = '';
+const topic = 'all';
 
-admin.messaging().sendToDevice(token, {
+admin.messaging().sendToTopic(topic, {
   data: {
     nome: 'Treinaweb'
   }

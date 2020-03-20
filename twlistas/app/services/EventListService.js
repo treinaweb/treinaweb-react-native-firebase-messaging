@@ -21,7 +21,6 @@ export const EventListService = {
     async setItem(newItem){
         try{
             const list = await EventListService.getList();
-            console.log(list)
             const newList = list.map(item => item.id !== newItem.id ? item:newItem);
             AsyncStorage.setItem(listKey, JSON.stringify(newList));
             EventListService.updateEventsNotifications();
