@@ -1,11 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Button, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import AlarmView from './AlarmView';
 import EventsView from './EventsView';
+import {MessagesService} from '../services/MessagesService';
 
 export default (props) => {
     const [view, setView] = useState('alarm');
+
+    useEffect(() => {
+        MessagesService.start();
+    }, [])
 
     function logout(){
         auth().signOut();
