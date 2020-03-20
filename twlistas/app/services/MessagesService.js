@@ -40,5 +40,11 @@ export const MessagesService = {
     async handleMessage(remoteMessage){
         console.log('Minha Mensagem: ', remoteMessage);
         return true;
+    },
+    handleBackgroundMessages(){
+        messaging().setBackgroundMessageHandler(async remoteMessage => {
+            console.log('Background', remoteMessage);
+            
+        })
     }
 }

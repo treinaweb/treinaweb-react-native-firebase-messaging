@@ -10,13 +10,16 @@ const topic = 'all';
 
 admin.messaging().sendToTopic(topic, {
   data: {
-    nome: 'Treinaweb'
-  },
-  notification:{
     title: 'Atualização do App',
     message: 'Faça a atualização',
-    color: 'red'
-  }
+    color: 'red',
+    nome: 'Treinaweb'
+  },
+  // notification:{
+  //   title: 'Atualização do App',
+  //   message: 'Faça a atualização',
+  //   color: 'red'
+  // }
 },
 {
   priority: 'high',
