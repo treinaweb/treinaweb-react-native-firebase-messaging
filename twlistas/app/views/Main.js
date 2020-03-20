@@ -5,6 +5,7 @@ import AlarmView from './AlarmView';
 import EventsView from './EventsView';
 import {MessagesService} from '../services/MessagesService';
 
+
 export default (props) => {
     const [view, setView] = useState('alarm');
 
