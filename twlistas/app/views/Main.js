@@ -10,6 +10,9 @@ export default (props) => {
 
     useEffect(() => {
         MessagesService.start();
+        return ()=>{
+            MessagesService.finish();
+        }
     }, [])
 
     function logout(){
