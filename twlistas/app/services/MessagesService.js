@@ -10,6 +10,9 @@ function setConfigurations(){
         // }
         onNotification(notification){
             console.log('NOTIFICAÇÃO', notification);
+            if(notification && notification.userInteraction){
+                
+            }
         }
     })
 }
