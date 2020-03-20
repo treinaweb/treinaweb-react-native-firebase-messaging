@@ -6,7 +6,8 @@ export const MessagesService = {
             await messaging().registerForRemoteNotifications();
             const granted = await messaging().requestPermission();
             if(granted){
-
+                messaging().getToken().then(console.log);
+                //messaging().onTokenRefresh(token => {});
             }
         }catch(error){}
     }
