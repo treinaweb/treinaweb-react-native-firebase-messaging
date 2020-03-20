@@ -18,12 +18,14 @@ export default () => {
     }, [])
 
     useEffect(() => {
-        // MessagesService.cancelAll();
+        MessagesService.cancelAll();
         list.forEach(item => {
             MessagesService.scheduleNotification( getScheduleTime(item.body.time),{
                 id: item.body.name.replace(':', ''),
                 title: item.body.name,
-                message: 'Chegou a Hora'
+                message: 'Chegou a Hora',
+                actions: '["Desativar"]',
+                _id: item.id
             });
         })
     }, [list])

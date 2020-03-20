@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import AlarmListItem from './AlarmListItem';
 
 export default (props) => {
-    const list = props.list || [];
+    const list = sortList(props.list) || [];
 
     function keyExtractor(item){
         return item.id;
@@ -11,6 +11,13 @@ export default (props) => {
 
     function onRemove(item){
         props.onRemove(item);
+    }
+
+    function sortList(list){
+        const newList = [...list].sort((a, b) => {
+            return a.body.name > b.body.name ? 1 : -1
+        })
+        return newList;
     }
 
     return (
